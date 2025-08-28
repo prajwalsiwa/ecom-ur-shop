@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import { usePathname } from "next/navigation";
+import Header from "@/components/Header";
 
 export default function RootLayout({
   children,
@@ -21,15 +22,20 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Providers>
-          <div className="min-h-screen flex">
+          <div className="min-h-screen flex w-full">
             {showSidebar && (
               <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
             )}
+            <div className="flex flex-col w-full">
+              {showSidebar && (
+                <Header toggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
+              )}
 
-            <main className="flex-1 p-6">
-              {children}
-              <Toaster position="top-right" />
-            </main>
+              <main className="flex-1 p-6 mt-0 lg:mt-0">
+                {children}
+                <Toaster position="top-right" />
+              </main>
+            </div>
           </div>
         </Providers>
       </body>
