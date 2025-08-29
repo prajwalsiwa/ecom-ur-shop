@@ -18,7 +18,7 @@ export default function Pagination({
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
-    <div className="flex justify-center mt-6 space-x-2">
+    <div className="flex justify-center mt-4 space-x-2">
       <button
         className="px-3 py-1 rounded border hover:bg-gray-200 disabled:opacity-50 cursor-pointer"
         onClick={() => onPageChange(currentPage - 1)}

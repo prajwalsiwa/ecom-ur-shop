@@ -20,9 +20,9 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body>
+      <body className="overflow-hidden ">
         <Providers>
-          <div className="min-h-screen flex w-full">
+          <div className="h-screen flex w-full">
             {showSidebar && (
               <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
             )}
@@ -31,7 +31,7 @@ export default function RootLayout({
                 <Header toggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
               )}
 
-              <main className="flex-1 p-6 mt-0 lg:mt-0">
+              <main className="flex-1 p-6 mt-0 lg:mt-0 overflow-auto">
                 {children}
                 <Toaster position="bottom-right" 
                  />
