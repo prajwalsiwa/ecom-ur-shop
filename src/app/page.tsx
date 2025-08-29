@@ -4,10 +4,10 @@
 
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
-import { fetcher } from "@/lib/fetcher";
 import ProductCard from "@/components/ProductCard";
 import ProductGridSkeleton from "@/components/ProductGridSkeleton";
 import Pagination from "@/components/Pagination";
+import { getProducts } from "@/services/api";
 
 const PRODUCTS_PER_PAGE = 6;
 
@@ -20,15 +20,17 @@ export default function Home() {
 
   useEffect(() => {
     setLoading(true);
-    fetcher("https://fakestoreapi.com/products")
+    getProducts()
       .then((data) => {
         setProducts(data);
       })
-      .catch(() => {
-        setError("Unable to fetch products");
+      .catch((err) => {
+        setError(err.message);
         toast.error("Failed to load products");
       })
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   if (loading) return <ProductGridSkeleton />;

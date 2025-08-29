@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -7,11 +6,11 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { ShoppingCart, Star, ChevronLeft } from "lucide-react";
 import { Product } from "@/types";
-import { fetcher } from "@/lib/fetcher";
 import ProductInfoSkeleton from "@/components/ProductInfoSkeleton";
 import { useDispatch } from "react-redux";
 import { addItem } from "@/store/slices/cartSlice";
 import Toaster from "@/components/Toaster";
+import { getProductById } from "@/services/api";
 
 const ProductDetailPage: React.FC = () => {
   const params = useParams();
@@ -29,9 +28,7 @@ const ProductDetailPage: React.FC = () => {
     const getProduct = async () => {
       try {
         setLoading(true);
-        const data: Product = await fetcher(
-          `https://fakestoreapi.com/products/${id}`
-        );
+        const data = await getProductById(id);
         setProduct(data);
       } catch {
         setError("Product not found or failed to load.");
