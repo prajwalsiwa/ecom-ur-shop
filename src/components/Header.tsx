@@ -22,7 +22,7 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
         <div className="flex items-center">
           <button
             onClick={toggleSidebar}
-            className="text-gray-500 focus:outline-none lg:hidden"
+            className="text-gray-500 focus:outline-none lg:hidden cursor-pointer"
           >
             <Menu className="h-6 w-6" />
           </button>
@@ -41,7 +41,7 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
 
               <button
                 onClick={() => signOut({ callbackUrl: "/" })}
-                className="flex items-center gap-1 text-gray-600 font-semibold hover:text-red-500"
+                className="flex items-center gap-1 text-gray-600 font-semibold hover:text-red-500 cursor-pointer"
                 title="Logout"
               >
                 <LogOut className="w-5 h-5" />

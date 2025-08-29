@@ -47,7 +47,7 @@ const CartPage: React.FC = () => {
              
                 <div className="flex items-center my-4 sm:my-0 sm:mx-4">
                   <button
-                    className="p-1 border rounded-l-md hover:bg-gray-100"
+                    className="p-1 border rounded-l-md hover:bg-gray-100 cursor-pointer"
                     onClick={() => dispatch(decrement(item.id))}
                   >
                     <Minus size={16} />
@@ -59,7 +59,7 @@ const CartPage: React.FC = () => {
                     className="w-12 text-center border-t border-b"
                   />
                   <button
-                    className="p-1 border rounded-r-md hover:bg-gray-100"
+                    className="p-1 border rounded-r-md hover:bg-gray-100 cursor-pointer"
                     onClick={() => dispatch(increment(item.id))}
                   >
                     <Plus size={16} />
@@ -72,7 +72,7 @@ const CartPage: React.FC = () => {
 
                 <button
                   onClick={() => dispatch(removeItem(item.id))}
-                  className="text-gray-500 hover:text-red-500 ml-4"
+                  className="text-gray-500 hover:text-red-500 ml-4 cursor-pointer"
                 >
                   <Trash2 size={20} />
                 </button>

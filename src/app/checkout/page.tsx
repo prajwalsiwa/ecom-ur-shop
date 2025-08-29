@@ -125,7 +125,7 @@ const CheckoutPage: React.FC = () => {
 
         <button
           onClick={handlePlaceOrder}
-          className="w-full mt-6 bg-gray-700 text-white py-3 px-6 rounded-lg hover:bg-primary-hover transition-colors"
+          className="w-full mt-6 bg-gray-700 text-white py-3 px-6 rounded-lg hover:bg-primary-hover transition-colors cursor-pointer"
         >
           Place Order
         </button>

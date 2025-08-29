@@ -13,8 +13,8 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:-translate-y-1 duration-300 flex flex-col group">
-      <div className="relative p-4 h-60">
+    <div className="bg-white rounded-lg shadow-lg h-fit overflow-hidden transition-transform transform hover:-translate-y-1 duration-300 flex flex-col group">
+      <div className="relative p-4 h-48">
         <img
           src={product.image}
           alt={product.title}
