@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 Yatri Design Studio – Frontend Assignment: Mini E-Commerce Store
 
-## Getting Started
+This project is a **Mini E-Commerce Store** built with **Next.js (App Router)**, **TypeScript**, **Redux Toolkit**, **TailwindCSS**.  
+It demonstrates authentication, routing, state management, sidebar navigation, and cart functionality as per the assignment requirements.
 
-First, run the development server:
+---
 
+## 🌐 Live Demo
+👉 [View Live Project](https://yatri-frontend-task-ecommerce-alpha.vercel.app/)
+
+---
+
+## 🚀 Setup Instructions
+
+### 1. Clone Repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/prajwalsiwa/yatri-frontend-task-ecommerce.git
+cd yatri-frontend-task-ecommerce
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install Dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Run Development Server
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📂 Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+📦 project-root
+├── 📂 app              # Next.js App Router pages, layouts, routes
+│   ├── cart/           # Shopping cart page (protected)
+│   ├── checkout/       # Checkout page (protected)
+│   ├── login/          # OAuth login page
+│   ├── products/       # Product listing & product details
+│   ├── profile/        # User profile page (protected)
+│   └── page.tsx        # Home page (Product List)
+│
+├── 📂 components       # Reusable UI components
+│   ├── Header.tsx
+│   ├── Sidebar.tsx
+│   ├── Pagination.tsx
+│   ├── ProductGridSkeleton.tsx
+│   └── ProductCard.tsx
+│
+├── 📂 lib              # Utilities/helpers
+│   └── fetcher.ts
+│
+├── 📂 services         # API calls / business logic
+│   └── api.ts
+│
+├── 📂 store            # Redux slices & global state
+│   ├── cartSlice.ts
+│   └── index.ts
+│
+├── 📂 types            # TypeScript types & interfaces
+│   └── product.ts
+│
+├── README.md
+└── package.json
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🔄 Project Flow
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Authentication (NextAuth.js)**  
+  - Users can log in via **Google/GitHub**.  
+  - Only logged-in users can access **Cart, Checkout, and Profile**.  
+  - If not logged in → redirect to `/login`.  
+  - **Sidebar dynamically updates**: "Cart", "Checkout", and "Profile" are only visible after login.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Homepage (Products List)**  
+  - Fetches product data from **fakestoreapi.com** (or mock JSON).  
+  - Displays products in a responsive grid with name, price, and image.  
+  - Implements **loading skeletons** and **error states**.  
+  - Pagination and search bar included (bonus).  
+  - Clicking a product navigates to **Product Detail Page**.
+
+- **Product Detail Page (/products/[id])**  
+  - Displays product title, description, price.  
+  - **Add to Cart** button with success/error toast notifications.
+
+- **Cart Page**  
+  - Powered by **Redux Toolkit** (persisted in `localStorage`).  
+  - Features: Add, Remove, Update quantity.  
+  - Displays **total items and total price**.  
+
+- **Checkout Page (Protected)**  
+  - Shows **order summary** (cart items & total).  
+  - Simulates order placement with confirmation message.  
+
+- **Sidebar Navigation**  
+  - Links: **Home, Cart, Checkout, Profile**.  
+  - Active link is highlighted.  
+  - Collapsible into a hamburger menu on smaller screens.  
+  - **Cart/Checkout/Profile appear only when logged in.**
+
+---
+
+## 🛠 Tech Stack
+
+- [Next.js (App Router)](https://nextjs.org/docs/app)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Redux Toolkit + Persist](https://redux-toolkit.js.org/)
+- [NextAuth.js](https://next-auth.js.org/) for OAuth (Google/GitHub)
+- [TailwindCSS](https://tailwindcss.com/)
+
+---
+
+## ✅ Features Implemented
+
+- ✅ OAuth authentication with **Google/GitHub**  
+- ✅ Protected routes for **Cart, Checkout, Profile**  
+- ✅ Product list & detail pages with **skeleton loaders** and **error handling**  
+- ✅ Cart with **add, remove, update, persist**  
+- ✅ Checkout with order summary + confirmation  
+- ✅ Sidebar navigation with **dynamic links** (only visible when logged in)  
+- ✅ Responsive design (mobile → desktop)  
+- ✅ Toast notifications for cart actions  
+
+
+✨ This project fulfills all requirements of the **Yatri Design Studio Frontend Assignment**.
