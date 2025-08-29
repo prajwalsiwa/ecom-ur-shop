@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -8,15 +9,19 @@ import { ShoppingCart, Star, ChevronLeft } from "lucide-react";
 import { Product } from "@/types";
 import { fetcher } from "@/lib/fetcher";
 import ProductInfoSkeleton from "@/components/ProductInfoSkeleton";
+import { useDispatch } from "react-redux";
+import { addItem } from "@/store/slices/cartSlice";
+import { toast } from "react-hot-toast";
 
 const ProductDetailPage: React.FC = () => {
   const params = useParams();
   const id = params.id;
+  const dispatch = useDispatch();
 
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [imgLoaded, setImgLoaded] = useState(false); 
+  const [imgLoaded, setImgLoaded] = useState(false);
 
   useEffect(() => {
     if (!id) return;
@@ -38,10 +43,7 @@ const ProductDetailPage: React.FC = () => {
     getProduct();
   }, [id]);
 
-  if (loading)
-    return (
-     <ProductInfoSkeleton />
-    );
+  if (loading) return <ProductInfoSkeleton />;
 
   if (error)
     return (
@@ -49,6 +51,41 @@ const ProductDetailPage: React.FC = () => {
     );
   if (!product)
     return <div className="text-center text-xl mt-10">Product not found.</div>;
+
+  const handleAddToCart = () => {
+    if (product) {
+      dispatch(
+        addItem({
+          id: product.id,
+          title: product.title,
+          price: product.price,
+          image: product.image,
+        })
+      );
+      toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? "animate-enter" : "animate-leave"
+          } max-w-sm w-full bg-white shadow-lg rounded-xl pointer-events-auto flex ring-1 ring-black ring-opacity-5 p-3`}
+        >
+          <img
+            src={product.image}
+            alt={product.title}
+            className="w-12 h-12 rounded-lg object-cover"
+          />
+          <div className="ml-3 flex-1">
+            <p className="text-sm font-semibold text-gray-900">
+              {product.title}
+            </p>
+            <p className="text-xs text-gray-500">${product.price}</p>
+            <p className="text-xs text-green-600 font-medium">
+              Added to cart ✅
+            </p>
+          </div>
+        </div>
+      ));
+    }
+  };
 
   return (
     <div className="container mx-auto p-4">
@@ -103,7 +140,7 @@ const ProductDetailPage: React.FC = () => {
           <p className="text-gray-700 mb-6">{product.description}</p>
 
           <button
-            onClick={() => {}}
+            onClick={handleAddToCart}
             className="flex items-center justify-center bg-primary text-white hover:bg-gray-700 bg-gray-800 py-3 px-6 rounded-lg hover:bg-primary-hover transition-colors w-full sm:w-auto"
           >
             <ShoppingCart className="w-5 h-5 mr-2" />
