@@ -11,7 +11,7 @@ import { fetcher } from "@/lib/fetcher";
 import ProductInfoSkeleton from "@/components/ProductInfoSkeleton";
 import { useDispatch } from "react-redux";
 import { addItem } from "@/store/slices/cartSlice";
-import { toast } from "react-hot-toast";
+import Toaster from "@/components/Toaster";
 
 const ProductDetailPage: React.FC = () => {
   const params = useParams();
@@ -53,7 +53,12 @@ const ProductDetailPage: React.FC = () => {
     return <div className="text-center text-xl mt-10">Product not found.</div>;
 
   const handleAddToCart = () => {
-    if (product) {
+    if (!product) {
+      Toaster("Product not found", false);
+      return;
+    }
+
+    try {
       dispatch(
         addItem({
           id: product.id,
@@ -62,28 +67,9 @@ const ProductDetailPage: React.FC = () => {
           image: product.image,
         })
       );
-      toast.custom((t) => (
-        <div
-          className={`${
-            t.visible ? "animate-enter" : "animate-leave"
-          } max-w-sm w-full bg-white shadow-lg rounded-xl pointer-events-auto flex ring-1 ring-black ring-opacity-5 p-3`}
-        >
-          <img
-            src={product.image}
-            alt={product.title}
-            className="w-12 h-12 rounded-lg object-cover"
-          />
-          <div className="ml-3 flex-1">
-            <p className="text-sm font-semibold text-gray-900">
-              {product.title}
-            </p>
-            <p className="text-xs text-gray-500">${product.price}</p>
-            <p className="text-xs text-green-600 font-medium">
-              Added to cart ✅
-            </p>
-          </div>
-        </div>
-      ));
+      Toaster(`Added ${product.title} to cart`, true, product.image);
+    } catch {
+      Toaster("Failed to add to cart", false);
     }
   };
 

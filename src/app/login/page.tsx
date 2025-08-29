@@ -3,6 +3,7 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { LogIn, Github } from "lucide-react";
+import { toast } from "react-hot-toast";
 
 export default function LoginPage() {
   const [name, setName] = useState("");
@@ -22,8 +23,9 @@ export default function LoginPage() {
 
     if (result?.ok) {
       router.replace(from);
+       toast.success("Login successful!");
     } else {
-      alert("Login failed");
+          toast.error("Login failed. Please check your credentials.");
     }
   };
 

@@ -1,5 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 "use client";
+
+import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import { fetcher } from "@/lib/fetcher";
 import ProductCard from "@/components/ProductCard";
@@ -16,9 +19,15 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
+    setLoading(true);
     fetcher("https://fakestoreapi.com/products")
-      .then((data) => setProducts(data))
-      .catch(() => setError("Unable to fetch products"))
+      .then((data) => {
+        setProducts(data);
+      })
+      .catch(() => {
+        setError("Unable to fetch products");
+        toast.error("Failed to load products");
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -38,7 +47,7 @@ export default function Home() {
   );
 
   return (
-    <div className=" p-4 ">
+    <div className="p-4">
       {/* Search */}
       <div className="flex justify-center mb-6">
         <input
