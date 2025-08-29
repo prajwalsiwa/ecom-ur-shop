@@ -71,7 +71,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
         <div className="flex justify-between items-center">
           <h2 className="text-2xl font-semibold text-white">Yatri Store</h2>
           <button
-            className="lg:hidden text-gray-400 hover:text-white"
+            className="lg:hidden text-gray-400 hover:text-white cursor-pointer"
             onClick={closeSidebar}
           >
             <X size={24} />
@@ -103,7 +103,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
             {isAuthenticated ? (
               <button
                 onClick={handleLogout}
-                className="flex items-center w-full px-4 py-2 mt-2 text-gray-400 transition-colors duration-300 transform rounded-md hover:bg-gray-700 hover:text-gray-200"
+                className="flex items-center cursor-pointer w-full px-4 py-2 mt-2 text-gray-400 transition-colors duration-300 transform rounded-md hover:bg-gray-700 hover:text-gray-200"
               >
                 <LogOut className="w-5 h-5" />
                 <span className="mx-4 font-medium">Logout</span>
