@@ -1,4 +1,4 @@
-# 🛒 Yatri Design Studio – Frontend Assignment: Mini E-Commerce Store
+# Mini E-Commerce Store
 
 This project is a **Mini E-Commerce Store** built with **Next.js (App Router)**, **TypeScript**, **Redux Toolkit**, **TailwindCSS**.  
 It demonstrates authentication, routing, state management, sidebar navigation, and cart functionality as per the assignment requirements.
@@ -6,7 +6,7 @@ It demonstrates authentication, routing, state management, sidebar navigation, a
 ---
 
 ## 🌐 Live Demo
-👉 [View Live Project](https://yatri-frontend-task-ecommerce-alpha.vercel.app/)
+👉 [View Live Project](https://ecom-ur-shop.vercel.app/)
 
 ---
 
@@ -14,8 +14,7 @@ It demonstrates authentication, routing, state management, sidebar navigation, a
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/prajwalsiwa/yatri-frontend-task-ecommerce.git
-cd yatri-frontend-task-ecommerce
+git clone https://github.com/prajwalsiwa/ecom-ur-shop.git
 ```
 
 ### 2. Install Dependencies
