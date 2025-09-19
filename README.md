@@ -127,4 +127,4 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 - ✅ Toast notifications for cart actions  
 
 
-✨ This project fulfills all requirements of the **Yatri Design Studio Frontend Assignment**.
+
