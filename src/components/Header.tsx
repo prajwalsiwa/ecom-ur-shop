@@ -27,14 +27,13 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
             <Menu className="h-6 w-6" />
           </button>
           <h1 className="text-xl flex-start flex font-bold text-gray-800 ml-4 lg:ml-0">
-            <Link href="/">Yatri Store</Link>
+            <Link href="/">Your Shop</Link>
           </h1>
         </div>
 
         <div className="flex items-center">
           {status === "authenticated" && session?.user ? (
             <div className="flex items-center space-x-3">
-             
               <div className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-white font-semibold">
                 {getInitial(session.user.name)}
               </div>

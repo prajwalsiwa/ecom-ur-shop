@@ -10,7 +10,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const router = useRouter();
   const searchParams = useSearchParams();
-  const from = searchParams.get("from") || "/"; 
+  const from = searchParams.get("from") || "/";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,28 +23,31 @@ export default function LoginPage() {
 
     if (result?.ok) {
       router.replace(from);
-       toast.success("Login successful!");
+      toast.success("Login successful!");
     } else {
-          toast.error("Login failed. Please check your credentials.");
+      toast.error("Login failed. Please check your credentials.");
     }
   };
 
- 
   const handleOAuthSignIn = (provider: "google" | "github") => {
-    signIn(provider, { callbackUrl: from }); 
+    signIn(provider, { callbackUrl: from });
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-gray-800">Welcome to Yatri Store</h1>
+          <h1 className="text-3xl font-bold text-gray-800">
+            Welcome to Your Shop
+          </h1>
           <p className="text-gray-500">Log in to continue</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="name" className="text-sm font-medium text-gray-700">Username</label>
+            <label htmlFor="name" className="text-sm font-medium text-gray-700">
+              Username
+            </label>
             <input
               id="name"
               type="text"
@@ -57,7 +60,12 @@ export default function LoginPage() {
           </div>
 
           <div>
-            <label htmlFor="password" className="text-sm font-medium text-gray-700">Password</label>
+            <label
+              htmlFor="password"
+              className="text-sm font-medium text-gray-700"
+            >
+              Password
+            </label>
             <input
               id="password"
               type="password"

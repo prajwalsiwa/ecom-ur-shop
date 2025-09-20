@@ -49,7 +49,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
 
   const handleLogout = () => {
     closeSidebar();
-    signOut(); 
+    signOut();
   };
 
   return (
@@ -69,7 +69,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
         }`}
       >
         <div className="flex justify-between items-center">
-          <h2 className="text-2xl font-semibold text-white">Yatri Store</h2>
+          <h2 className="text-2xl font-semibold text-white">Your Shop</h2>
           <button
             className="lg:hidden text-gray-400 hover:text-white cursor-pointer"
             onClick={closeSidebar}
@@ -80,19 +80,35 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
 
         <nav className="flex flex-col justify-between flex-1 mt-6">
           <div>
-            <NavItem to="/" icon={<Home className="w-5 h-5" />} onClick={closeSidebar}>
+            <NavItem
+              to="/"
+              icon={<Home className="w-5 h-5" />}
+              onClick={closeSidebar}
+            >
               Home
             </NavItem>
-            <NavItem to="/cart" icon={<ShoppingCart className="w-5 h-5" />} onClick={closeSidebar}>
+            <NavItem
+              to="/cart"
+              icon={<ShoppingCart className="w-5 h-5" />}
+              onClick={closeSidebar}
+            >
               Cart
             </NavItem>
 
             {isAuthenticated && (
               <>
-                <NavItem to="/checkout" icon={<CheckCircle className="w-5 h-5" />} onClick={closeSidebar}>
+                <NavItem
+                  to="/checkout"
+                  icon={<CheckCircle className="w-5 h-5" />}
+                  onClick={closeSidebar}
+                >
                   Checkout
                 </NavItem>
-                <NavItem to="/profile" icon={<User className="w-5 h-5" />} onClick={closeSidebar}>
+                <NavItem
+                  to="/profile"
+                  icon={<User className="w-5 h-5" />}
+                  onClick={closeSidebar}
+                >
                   Profile
                 </NavItem>
               </>
@@ -109,7 +125,11 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
                 <span className="mx-4 font-medium">Logout</span>
               </button>
             ) : (
-              <NavItem to="/login" icon={<LogIn className="w-5 h-5" />} onClick={closeSidebar}>
+              <NavItem
+                to="/login"
+                icon={<LogIn className="w-5 h-5" />}
+                onClick={closeSidebar}
+              >
                 Login
               </NavItem>
             )}
